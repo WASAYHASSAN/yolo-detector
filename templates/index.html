@@ -10,7 +10,17 @@
 <body>
   <main class="container">
     <h1>YOLOv4 Detector</h1>
-    <p class="lead">Upload an image and get it back with bounding boxes (powered by YOLOv4 + OpenCV).</p>
+    <p class="lead">Upload an image and get it back with bounding boxes (YOLOv4 + OpenCV).</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="messages">
+          {% for category, msg in messages %}
+            <div class="alert {{ category }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
 
     <form method="post" enctype="multipart/form-data" class="card upload-card">
       <label class="file-label">
@@ -28,7 +38,7 @@
     </section>
     {% endif %}
 
-    <footer class="muted">Tips: For smaller latency, use small images (max ~2–4 MB). Large images may take longer to process.</footer>
+    <footer class="muted">Tips: For smaller latency, use images under 4 MB.</footer>
   </main>
 </body>
 </html>
