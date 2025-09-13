@@ -29,7 +29,8 @@ with open(NAMES_PATH, "r") as f:
 net = cv2.dnn.readNetFromDarknet(CFG_PATH, WEIGHTS_PATH)
 # Use OpenCV's CPU backend (works on Render). If you have GPU support you can try net.setPreferableBackend etc.
 layer_names = net.getLayerNames()
-output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
+
 
 def run_yolo(image_path):
     img = cv2.imread(image_path)
