@@ -1,4 +1,7 @@
-Flask==2.3.2
-gunicorn==20.1.0
-opencv-python-headless==4.7.0.72
-numpy
+flask
+gunicorn
+opencv-python-headless==4.10.0.84
+torch==2.3.1
+torchvision==0.18.1
+ultralytics==8.2.87
+numpy<2
