@@ -1,0 +1,34 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YOLOv4 Image Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <h1>YOLOv4 Detector</h1>
+    <p class="lead">Upload an image and get it back with bounding boxes (powered by YOLOv4 + OpenCV).</p>
+
+    <form method="post" enctype="multipart/form-data" class="card upload-card">
+      <label class="file-label">
+        <input type="file" name="image" accept="image/*" required>
+        <span>Select image</span>
+      </label>
+      <button class="btn" type="submit">Detect</button>
+    </form>
+
+    {% if result_image %}
+    <section class="result">
+      <h2>Result</h2>
+      <img src="{{ result_image }}" alt="Result image" class="result-image">
+      <p><a href="{{ result_image }}" download class="btn">Download</a></p>
+    </section>
+    {% endif %}
+
+    <footer class="muted">Tips: For smaller latency, use small images (max ~2–4 MB). Large images may take longer to process.</footer>
+  </main>
+</body>
+</html>
